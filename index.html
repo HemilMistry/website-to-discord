@@ -9,36 +9,32 @@
 <body>
 
 <!-- HTML form -->
-<form>
+<form id="myForm">
     <label for="nameInput">Enter your text:</label>
     <input type="text" id="nameInput" name="name">
-    <button type="button" onclick="handleSubmit()">Submit</button>
+    <button type="button" id="submitBtn">Submit</button>
 </form>
 
 <!-- JavaScript -->
 <script>
-function handleSubmit() {
-    var name = document.getElementById('nameInput').value;
-    fetch('/submitData', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name:name})
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok')    
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Server response', data);
-    })
-    .catch(error => {
-        console.error('Error', error)
-    })
-}
+$(document).ready(function() {
+    // Handle form submission
+    $('#submitBtn').click(function() {
+        var name = $('#nameInput').val();
+        $.ajax({
+            url: '/submitData',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ name: name }),
+            success: function(data) {
+                console.log('Server response:', data);
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
 </script>
 
 </body>
