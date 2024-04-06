@@ -4,36 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website to Discord</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-
 <!-- HTML form -->
-<form action="/submitData" method="POST">
-    <label for="textbox">Enter your text:</label>
-    <input type="text" id="textbox" name="inputData">
-    <button type="button" id="submitBtn">Submit</button>
+<form>
+    <label for="nameInput">Enter your text:</label>
+    <input type="text" id="nameInput" name="name">
+    <button type="button" onclick="handleSubmit()">Submit</button>
 </form>
 
- <!-- JavaScript -->
+<!-- JavaScript -->
 <script>
-    document.getElementById("submitBtn").addEventListener("click", sendValue);
-    
-    function sendValue() {
-        var inputData = document.getElementById('textbox').value; // Corrected: Changed 'textInput' to 'textbox'
-        var xhr = new XMLHttpRequest(); // Corrected: Instantiate a new XMLHttpRequest object
-        xhr.open("POST", "/submitData");
-        xhr.setRequestHeader("Content-Type","application/json");
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log('Data submitted successfully', xhr.responseText);
-            } else {
-                console.log('Error submitting data', xhr.statusText);
-            }
-        };
-        xhr.send(JSON.stringify({inputData: inputData}));
-    }
-    </script>
+function handleSubmit() {
+    var name = document.getElementById('nameInput');
+    fetch('/submitData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name:name})
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok')    
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server response', data);
+    })
+    .catch(error => {
+        console.error('Error', error)
+    })
+}
+</script>
 
 </body>
 </html>
