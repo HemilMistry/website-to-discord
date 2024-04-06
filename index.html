@@ -18,7 +18,7 @@
 <!-- JavaScript -->
 <script>
 function handleSubmit() {
-    var name = document.getElementById('nameInput');
+    var name = document.getElementById('nameInput').value;
     fetch('/submitData', {
         method: 'POST',
         headers: {
