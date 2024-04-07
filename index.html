@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website to Discord</title>
+    <title>Website to Discord 2</title>
 </head>
 <body>
 
 <!-- HTML form -->
-<form id="myForm" action="/submitData" method="POST">
+<form id="myForm" action="https://website-to-discord.vercel.app/submitData" method="POST">
     <label for="textbox">Enter your text:</label>
     <input type="text" id="textbox" name="inputData" required>
     <button type="submit">Submit</button>
@@ -21,7 +21,7 @@
         
         var inputData = document.getElementById('textbox').value; 
         var xhr = new XMLHttpRequest(); 
-        xhr.open("POST", "/submitData");
+        xhr.open("POST", "https://website-to-discord.vercel.app/submitData");
         xhr.setRequestHeader("Content-Type","application/json");
         xhr.onload = function() {
             if (xhr.status === 200) {
