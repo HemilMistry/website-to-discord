@@ -16,22 +16,23 @@
 
  <!-- JavaScript -->
 <script>
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        
-        var inputData = document.getElementById('textbox').value; 
-        var xhr = new XMLHttpRequest(); 
-        xhr.open("POST", "https://website-to-discord.vercel.app/submitData");
-        xhr.setRequestHeader("Content-Type","application/json");
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log('Data submitted successfully', xhr.responseText);
-            } else {
-                console.log('Error submitting data', xhr.statusText);
-            }
-        };
-        xhr.send(JSON.stringify({inputData: inputData}));
-    });
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    var inputData = document.getElementById('textbox').value; 
+    var xhr = new XMLHttpRequest(); 
+    var url = 'https://website-to-discord.vercel.app/submitData'; // Update the URL here
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type","application/json");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('Data submitted successfully', xhr.responseText);
+        } else {
+            console.log('Error submitting data', xhr.statusText);
+        }
+    };
+    xhr.send(JSON.stringify({inputData: inputData}));
+});
 </script>
 
 </body>
