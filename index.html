@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website to Discord 2</title>
+    <title>Website to Discord</title>
 </head>
 <body>
 
 <!-- HTML form -->
-<form id="myForm" action="https://website-to-discord.vercel.app/submitData" method="POST">
+<form id="myForm" action="" method="POST">
     <label for="textbox">Enter your text:</label>
     <input type="text" id="textbox" name="inputData" required>
     <button type="submit">Submit</button>
@@ -33,6 +33,9 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     };
     xhr.send(JSON.stringify({inputData: inputData}));
 });
+
+// Update the form action URL dynamically
+document.getElementById("myForm").action = 'https://website-to-discord.vercel.app/submitData';
 </script>
 
 </body>
