@@ -1,0 +1,13 @@
+#container {
+    text-align: center;
+}
+
+#input {
+    width: fit-content;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+#input[type=text]:focus {
+    border: 3px solid #555;
+}
