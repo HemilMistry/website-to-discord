@@ -1,3 +1,5 @@
+# MAIN FILE - Run this file to start the web server as well as the Discord bot
+
 import concurrent.futures
 import subprocess
 
