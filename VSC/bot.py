@@ -32,7 +32,7 @@ async def on_ready():
 
     web.start()
 
-CHANNEL_ID = 'Channel ID'
+CHANNEL_ID = 'Channel ID' # Change this to the channel ID of a Discord channel the bot has access in
 
 @tasks.loop(seconds=3)
 async def web():
@@ -48,5 +48,5 @@ async def web():
         setFlag() 
 
 
-bot.run('Bot Token')
+bot.run('Bot Token') # Paste with your own bot token 
 
